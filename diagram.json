@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-s2-devkitm-1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 6, "left": 215, "attrs": { "color": "green" } },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -30.1, "left": -144.2, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 281.6,
+      "left": -66.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": 444.2,
+      "left": -19.8,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 90.35,
+      "left": 211.2,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 115.2, "left": -125.4, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -28.04, "left": -48, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd2", "top": 508.8, "left": 133.8, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc2", "top": 403.96, "left": 124.8, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc3", "top": 240.76, "left": 115.2, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd3", "top": 336, "left": 114.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "led1:A", "r1:2", "green", [ "v0", "h38.4", "v48" ] ],
+    [ "led1:C", "esp:GND.2", "green", [ "v0", "h-66.8", "v-28.8" ] ],
+    [ "pot1:GND", "gnd1:GND", "black", [ "v0" ] ],
+    [ "pot1:VCC", "vcc1:VCC", "red", [ "v28.8", "h8.8" ] ],
+    [ "ldr1:GND", "gnd3:GND", "black", [ "h0" ] ],
+    [ "ldr1:VCC", "vcc3:VCC", "red", [ "h0" ] ],
+    [ "ntc1:GND", "gnd2:GND", "black", [ "h0" ] ],
+    [ "ntc1:VCC", "vcc2:VCC", "red", [ "h19.2", "v-38.4" ] ],
+    [ "ldr1:AO", "esp:18", "green", [ "h48", "v-106.3" ] ],
+    [ "ntc1:OUT", "esp:19", "green", [ "h67.2", "v-288.1" ] ],
+    [ "pot1:SIG", "esp:8", "green", [ "v67.2", "h76.4" ] ],
+    [ "esp:20", "r1:1", "green", [ "h90.97", "v-100.31" ] ]
+  ],
+  "dependencies": {}
+}
